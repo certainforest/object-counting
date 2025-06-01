@@ -33,6 +33,13 @@ def create_counting_prompt(entity_type, word_list, tokenizer, device):
 
     ]
 
-    return tokenizer.apply_chat_template(base_prompt, return_tensors = 'pt').to(device)
+    output = tokenizer.apply_chat_template(
+        base_prompt, 
+        # return_tensors = 'pt',
+        tokenize = False,
+        add_generation_prompt = False,
+        continue_final_message = True)
+
+    return output
 
 
