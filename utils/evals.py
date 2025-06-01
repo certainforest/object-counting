@@ -8,7 +8,7 @@ def load_model(dir, device = 'cuda'):
     return tokenizer, model
 
 # templating + instruct formatting 
-def create_counting_prompt(entity_type, word_list, tokenizer, device):
+def create_counting_prompt(entity_type, word_list, tokenizer):
     """
     Generate the counting prompt. 
 
@@ -22,7 +22,7 @@ def create_counting_prompt(entity_type, word_list, tokenizer, device):
 
     user_template = """Count the number of words in the following  list that match the given type, and put the numerical answer in parentheses.
         Type: {{ entity_type }}
-        List: [{{ word_list | list }}]
+        List: [{{ word_list }}]
         """ 
     template = Template(user_template)
     user_content = template.render(entity_type = entity_type, word_list = word_list)
