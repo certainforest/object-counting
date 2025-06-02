@@ -1,9 +1,10 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM  
 from jinja2 import Template 
+import torch
 
 def load_model(dir, device = 'cuda'):
     tokenizer = AutoTokenizer.from_pretrained(dir, trust_remote_code = True)
-    model = AutoModelForCausalLM.from_pretrained(dir, trust_remote_code = True)
+    model = AutoModelForCausalLM.from_pretrained(dir, trust_remote_code = True, torch_dtype = torch.bfloat16)
     model = model.to(device)
     return tokenizer, model
 

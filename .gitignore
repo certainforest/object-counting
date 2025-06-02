@@ -7,9 +7,9 @@
 **/__pycache__/
 
 # data 
-data/
+# data/
 *.csv
-*.json
+# *.json
 *.txt
 
 # model checkpts 

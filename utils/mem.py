@@ -27,6 +27,13 @@ def check_memory():
         print(f"  Total: {torch.cuda.get_device_properties(i).total_memory/1024/1024/1024:.2f} GB")
         print()
 
+# ack mem management 
+def clear_model_objects():
+    if 'model' in locals():
+        del model 
+    if 'tokenizer' in locals(): 
+        del tokenizer
+
 def clear_all_cuda_memory():
     """
     Clear all CUDA memory
